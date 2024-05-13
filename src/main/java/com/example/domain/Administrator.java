@@ -4,14 +4,14 @@ package com.example.domain;
 /**
 * administrators domainクラス
 */
-public class administrators {
+public class Administrator {
     
     private Integer id;
     private String name;
     private String mailAddress;
     private String password;
     
-    public administrators() {
+    public Administrator() {
     }
 
     @Override
