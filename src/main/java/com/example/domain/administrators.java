@@ -11,12 +11,15 @@ public class administrators {
     private String mailAddress;
     private String password;
     
+    public administrators() {
+    }
+
     @Override
     public String toString() {
         return "administrators [id=" + id + ", name=" + name + ", mailAddress=" + mailAddress + ", password=" + password
                 + "]";
     }
-    
+
     public Integer getId() {
         return id;
     }
