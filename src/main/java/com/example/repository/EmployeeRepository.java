@@ -12,7 +12,10 @@ import org.springframework.stereotype.Repository;
 
 import com.example.domain.Employee;
 
-
+/**
+*   Employee Repositoryクラス 
+*   @author Ryo Saito
+*/
 @Repository
 public class EmployeeRepository {
     private static final RowMapper<Employee> EMPLOYEE_ROW_MAPPER = (rs,i) ->{
