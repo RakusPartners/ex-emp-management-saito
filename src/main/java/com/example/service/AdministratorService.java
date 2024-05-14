@@ -1,5 +1,6 @@
 package com.example.service;
 
+import org.apache.logging.log4j.util.StackLocator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,5 +34,9 @@ public class AdministratorService {
      */
     public Administrator login(String mailAddress, String password){
         return administratorRepository.findByMailAddressAndPassword(mailAddress, password);
+    }
+
+    public Administrator checkMailAddress(String mailAddress){
+        return administratorRepository.findByMail(mailAddress);
     }
 }

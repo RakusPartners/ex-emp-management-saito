@@ -1,11 +1,17 @@
 package com.example.form;
 
+import jakarta.validation.constraints.NotBlank;
+
 /**
 *   Update Employee Formクラス
 *   @author Ryo Saito
 */
 public class UpdateEmployeeForm {
+
+
     private String id;
+
+    @NotBlank(message = "扶養人数を入力してください")
     private String dependentsCount;
 
     @Override

@@ -4,6 +4,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -57,9 +59,15 @@ public class AdministratorController {
      * @return
      */
     @GetMapping("/toInsert")
-    public String toInsert(InsertAdministratorForm form){
+    public String toInsert(Model model, InsertAdministratorForm form){
 
-        return "/administrator/insert";
+        Administrator administrator = new Administrator();
+
+        BeanUtils.copyProperties(form, administrator);
+
+        model.addAttribute("administrtor", administrator);
+
+        return "administrator/insert";
     }
 
     /**
@@ -68,7 +76,18 @@ public class AdministratorController {
      * @return
      */
     @PostMapping("/insert")
-    public String insert(InsertAdministratorForm form){
+    public String insert(@Validated InsertAdministratorForm form, BindingResult result ,Model model){
+
+        if(result.hasErrors()){
+            return toInsert(model, form);
+        } 
+        if(administratorService.checkMailAddress(form.getMailAddress())!=null){
+            model.addAttribute("insertErrorMessage", "そのメールアドレスは既に登録されています");
+            return toInsert(model, form);
+        }
+
+        
+
         Administrator administrator = new Administrator();
         BeanUtils.copyProperties(form, administrator);
         administratorService.insert(administrator);
