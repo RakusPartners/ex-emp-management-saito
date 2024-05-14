@@ -74,4 +74,13 @@ public class AdministratorController {
         administratorService.insert(administrator);
         return "redirect:/";    
     }
+
+    
+    @GetMapping("/logout")
+    public String logout(LoginForm form){
+
+        session.invalidate();
+        
+        return "redirect:/";
+    }
 }
