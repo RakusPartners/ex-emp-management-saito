@@ -2,7 +2,8 @@ package com.example.domain;
 
 
 /**
-* administrators domainクラス
+*   administrators domainクラス
+*   @author Ryo Saito
 */
 public class Administrator {
     

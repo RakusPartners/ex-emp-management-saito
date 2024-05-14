@@ -62,6 +62,11 @@ public class AdministratorController {
         return "/administrator/insert";
     }
 
+    /**
+     * データ追加を行う際に呼ばれるメソッド administrtorServiceのinsertメソッドを呼ぶ
+     * @param form
+     * @return
+     */
     @PostMapping("/insert")
     public String insert(InsertAdministratorForm form){
         Administrator administrator = new Administrator();

@@ -40,6 +40,10 @@ public class EmployeeRepository {
     @Autowired
     private NamedParameterJdbcTemplate template;
 
+    /**
+     * 全件検索
+     * @return　List<Employee>
+     */
     public List<Employee> findAll(){
         String sql = "SELECT id, name, image, gender, hire_date, mail_address, zip_code, address, telephone, salary, characteristics, dependents_count FROM employees ORDER BY hire_date DESC";
 
@@ -48,6 +52,11 @@ public class EmployeeRepository {
         return employeeList;
     }
 
+    /**
+     * id検索
+     * @param id
+     * @return Employee
+     */
     public Employee load(Integer id){
         String sql = "SELECT id, name, image, gender, hire_date, mail_address, zip_code, address, telephone, salary, characteristics, dependents_count FROM employees WHERE id=:id";
 
@@ -58,6 +67,10 @@ public class EmployeeRepository {
         return employee;
     }
 
+    /**
+     * 更新
+     * @param employee
+     */
     public void update(Employee employee){
         String sql = "UPDATE employees SET name=:name, image=:image, hire_date=:hireDate, mail_address=:mailAddress, zip_code=:zipCode, address=:address, telephone=:telephone, salary=:salary, characteristics=:characteristics, dependents_count=:dependentsCount WHERE id=:id";
 

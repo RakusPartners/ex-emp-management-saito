@@ -25,6 +25,12 @@ public class AdministratorService {
         administratorRepository.insert(administrator);
     }
 
+    /**
+     * AdministratorRepositoryのfindByMailAddressAndPasswordクラスを呼ぶメソッド
+     * @param mailAddress
+     * @param password
+     * @return Administrator
+     */
     public Administrator login(String mailAddress, String password){
         return administratorRepository.findByMailAddressAndPassword(mailAddress, password);
     }

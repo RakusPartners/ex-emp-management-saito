@@ -19,8 +19,21 @@ public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    /**
+     * リスト表示サービスクラスメソッド
+     * @return List<Employee>
+     */
     public List<Employee> showList(){
         return employeeRepository.findAll();
+    }
+
+    /**
+     * 詳細表示サービスクラスメソッド
+     * @param id
+     * @return Employee
+     */
+    public Employee showDetail(Integer id){
+        return employeeRepository.load(id);
     }
 
 }

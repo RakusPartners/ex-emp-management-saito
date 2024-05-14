@@ -9,8 +9,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.domain.Employee;
+import com.example.form.UpdateEmployeeForm;
 import com.example.service.EmployeeService;
 
+/**
+*   Employee Controllerクラス
+*   @author Ryo Saito
+*/
 @Controller
 @RequestMapping("/employee")
 public class EmployeeController {
@@ -29,5 +34,22 @@ public class EmployeeController {
         model.addAttribute("employeeList", employeeList);
 
         return "/employee/list";
+    }
+
+    /**
+     * 詳細ページ表示用メソッド
+     * @param id
+     * @param model
+     * @param form
+     * @return
+     */
+    @GetMapping("/showDetail")
+    public String showDetail(String id, Model model, UpdateEmployeeForm form){
+
+        Employee employee = employeeService.showDetail(Integer.parseInt(id));
+
+        model.addAttribute("employee", employee);
+
+        return "employee/detail";
     }
 }
