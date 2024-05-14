@@ -13,6 +13,7 @@ public class InsertAdministratorForm {
     private String name;
 
     @NotBlank(message = "メールアドレスを入力してください")
+    @Email(message = "メールアドレスの形式が不正です。")
     private String mailAddress;
 
     @NotBlank(message = "パスワードを入力してください")
