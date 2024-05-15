@@ -1,6 +1,4 @@
 package com.example.domain;
-
-
 /**
 *   administrators domainクラス
 *   @author Ryo Saito
