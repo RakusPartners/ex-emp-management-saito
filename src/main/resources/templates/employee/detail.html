@@ -48,7 +48,22 @@
                   <tr>
                     <th nowrap>従業員名</th>
                     <td>
-                      <span th:text="${employee.name}">山田花子</span>
+                      <label class="error-messages" th:errors="*{name}" >
+                        名前を入力してください
+                      </label>
+                      <label
+                        class="control-label"
+                        style="color: red"
+                        for="name"
+                      ></label>
+                      <!-- <input type="hidden" name="id" th:value="${employee.id}" /> -->
+                      <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        class="form-control"
+                        th:value="${employee.name}" value="佐藤次郎"
+                      />
                     </td>
                   </tr>
                   <tr>
@@ -60,50 +75,172 @@
                   <tr>
                     <th nowrap>性別</th>
                     <td>
-                      <span th:text="${employee.gender}">女性</span>
+                      <!-- <span th:text="${employee.gender}">女性</span> -->
+                      <label class="error-messages" th:errors="*{name}" >
+                        性別を選択してください
+                      </label>
+                      <label
+                        class="control-label"
+                        style="color: red"
+                        for="name"
+                      ></label>
+                      <!-- <input type="hidden" name="id" th:value="${employee.id}" /> -->
+                      <select name="gender"
+                        id="gender"
+                        class="form-control"
+                        th:value="${employee.gender}" value="男性"
+                      >
+                        <option value="男性">男性</option>
+                        <option value="女性">女性</option>
+                        <option value="無回答">無回答</option>
+                      </select>
                     </td>
                   </tr>
                   <tr>
                     <th nowrap>入社日</th>
                     <td>
-                      <span th:text="${employee.hireDate}">2012/11/29</span>
+                      <label class="error-messages" th:errors="*{hireDate}" >
+                        入社日を入力してください
+                      </label>
+                      <label
+                        class="control-label"
+                        style="color: red"
+                        for="hireDate"
+                      ></label>
+                      <input
+                        type="text"
+                        name="hireDate"
+                        id="hireDate"
+                        class="form-control"
+                        th:value="${employee.hireDate}" value="2012-11-29"
+                      />
                     </td>
                   </tr>
                   <tr>
+                    
                     <th nowrap>メールアドレス</th>
                     <td>
-                      <span th:text="${employee.mailAddress}">yamada@sample.com</span>
+                      <label class="error-messages" th:errors="*{mailAddress}" >
+                        メールアドレスを入力してください
+                      </label>
+                      <label
+                        class="control-label"
+                        style="color: red"
+                        for="mailAddress"
+                      ></label>
+                      <input
+                        type="text"
+                        name="mailAddress"
+                        id="mailAddress"
+                        class="form-control"
+                        th:value="${employee.mailAddress}" value="yamada@sample.com"
+                      />
                     </td>
                   </tr>
                   <tr>
+                    
                     <th nowrap>郵便番号</th>
                     <td>
-                      <span th:text="${employee.zipCode}">111-1111</span>
+                      <label class="error-messages" th:errors="*{zipCode}" >
+                        郵便番号を入力してください
+                      </label>
+                      <label
+                        class="control-label"
+                        style="color: red"
+                        for="zipCode"
+                      ></label>
+                      <input
+                        type="text"
+                        name="zipCode"
+                        id="zipCode"
+                        class="form-control"
+                        th:value="${employee.zipCode}" value="111-1111"
+                      />
                     </td>
                   </tr>
                   <tr>
+                    
                     <th nowrap>住所</th>
                     <td>
-                      <span th:text="${employee.address}">東京都新宿区1-1-1</span>
+                      <label class="error-messages" th:errors="*{address}" >
+                        住所を入力してください
+                      </label>
+                      <label
+                        class="control-label"
+                        style="color: red"
+                        for="address"
+                      ></label>
+                      <input
+                        type="text"
+                        name="address"
+                        id="address"
+                        class="form-control"
+                        th:value="${employee.address}" value="東京都新宿区1-1-1"
+                      />
                     </td>
                   </tr>
                   <tr>
                     <th nowrap>電話番号</th>
                     <td>
-                      <span th:text="${employee.telephone}">090-0000-0000</span>
+                      <label class="error-messages" th:errors="*{telephone}" >
+                        電話番号を入力してください
+                      </label>
+                      <label
+                        class="control-label"
+                        style="color: red"
+                        for="telephone"
+                      ></label>
+                      <input
+                        type="text"
+                        name="telephone"
+                        id="telephone"
+                        class="form-control"
+                        th:value="${employee.telephone}" value="090-0000-0000"
+                      />
                     </td>
                   </tr>
                   <tr>
                     <th nowrap>給料</th>
                     <td>
-                      <span th:text="${employee.salary}">400000円</span>
-                    </td>
+                      <label class="error-messages" th:errors="*{salary}" >
+                        給料を入力してください
+                      </label>
+                      <label
+                        class="control-label"
+                        style="color: red"
+                        for="salary"
+                      ></label>
+                      <input
+                        style="width: 80%; display: inline;"
+                        
+                        type="text"
+                        name="salary"
+                        id="salary"
+                        class="form-control"
+                        th:value="${employee.salary}" value="40000"
+                      />円
+                     </td>
+                    
                   </tr>
                   <tr>
                     <th nowrap>特性</th>
                     <td>
-                      <span th:text="${employee.characteristics}">明るく素直な性格です。リーダーシップを発揮します。新卒社員研修の時はグループ開発の時にリーダーを買ってでました。積極性も人間性も抜群です。周りに対する不満も聞いたことがありません。</span>
-                    </td>
+                    <label class="error-messages" th:errors="*{characteristics}" >
+                      特性を入力してください
+                    </label>
+                    <label
+                      class="control-label"
+                      style="color: red"
+                      for="characteristics"
+                    ></label>
+                    <input
+                      type="text"
+                      name="characteristics"
+                      id="characteristics"
+                      class="form-control"
+                      th:value="${employee.characteristics}" value="test"
+                    />
+                   </td>
                   </tr>
                   <tr>
                     <th nowrap>扶養人数</th>
@@ -123,7 +260,6 @@
                         id="dependentsCount"
                         class="form-control"
                         th:value="${employee.dependentsCount}" value="3"
-                        
                       />
                     </td>
                   </tr>

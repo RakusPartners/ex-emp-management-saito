@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,6 +72,24 @@ public class EmployeeController {
         }
 
         Employee employee = employeeService.showDetail(Integer.parseInt(form.getId()));
+
+        SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        try {
+            date = sdFormat.parse(form.getHireDate());
+        } catch (Exception e) {
+            // TODO: handle exception
+            e.printStackTrace();
+        }
+
+        employee.setName(form.getName());
+        employee.setGender(form.getGender());        
+        employee.setHireDate(date);
+        employee.setMailAddress(form.getMailAddress());
+        employee.setZipCode(form.getZipCode());
+        employee.setTelephone(form.getTelephone());
+        employee.setSalary(Integer.parseInt(form.getSalary()));
+        employee.setCharacteristics(form.getCharacteristics());
 
         employee.setDependentsCount(Integer.parseInt(form.getDependentsCount()));
 
