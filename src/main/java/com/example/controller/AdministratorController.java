@@ -30,6 +30,7 @@ public class AdministratorController {
     @Autowired
     private HttpSession session;
 
+    public static boolean isHttpSession;
     /**
      * login画面へフォワードするメソッド
      * @param form
@@ -38,8 +39,10 @@ public class AdministratorController {
     @GetMapping("/")
     public String toLogin(LoginForm form){
 
-        return "/administrator/login";
+        return "administrator/login";
     }
+
+    
 
     @PostMapping("/login")
     public String login(LoginForm form, Model model){
@@ -49,6 +52,7 @@ public class AdministratorController {
             return "/administrator/login";
         } else {
             session.setAttribute("administratorName", administrator.getName());
+            isHttpSession = true;
             return "redirect:/employee/showList";
         }
     }
@@ -99,6 +103,7 @@ public class AdministratorController {
     public String logout(LoginForm form){
 
         session.invalidate();
+        isHttpSession = false;
         
         return "redirect:/";
     }

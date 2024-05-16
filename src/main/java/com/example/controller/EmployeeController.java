@@ -30,15 +30,23 @@ public class EmployeeController {
     /**
      * EmployeeServiceクラスのshowListを呼び出してリストを取得後にリクエストスコープに格納してlist.htmlにフォワードするメソッド
      * @param model
-     * @return
+     * @return  
      */
     @GetMapping("/showList")
     public String showList(Model model){
-        List<Employee> employeeList = employeeService.showList();
         
-        model.addAttribute("employeeList", employeeList);
+        if(AdministratorController.isHttpSession){
+            List<Employee> employeeList = employeeService.showList();
+        
+            model.addAttribute("employeeList", employeeList);
 
-        return "/employee/list";
+            return "/employee/list";
+        } else {
+            return "redirect:/";
+        }
+
+        
+        
     }
 
     /**
@@ -50,12 +58,17 @@ public class EmployeeController {
      */
     @GetMapping("/showDetail")
     public String showDetail(String id, Model model, UpdateEmployeeForm form){
-
-        Employee employee = employeeService.showDetail(Integer.parseInt(id));
+        if(AdministratorController.isHttpSession){
+            Employee employee = employeeService.showDetail(Integer.parseInt(id));
 
         model.addAttribute("employee", employee);
 
         return "employee/detail";
+        } else {
+            return "redirect:/";
+        }
+
+        
     }
 
 
